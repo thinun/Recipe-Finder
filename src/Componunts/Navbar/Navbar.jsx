@@ -6,39 +6,8 @@ import {GlobalContext} from "../../Context/index.jsx";
 
 
 const Navbar = () => {
-    const {searchText, setSearchText} = useContext(GlobalContext);
-    const [loading , setLoading]= useState(false)
-    const [recipes, setRecipes]=useState([])
-    const [error, setError] = useState(null);
+    const {searchText, setSearchText, handleSearch} = useContext(GlobalContext);
 
-    async function handleSearch(event) {
-        event.preventDefault()
-        setLoading(true)
-        setError(null)
-        try {
-            const res = await
-                fetch(`https://forkify-api.herokuapp.com/api/v2/recipes?search=${searchText}`);
-            const data = await res.json();
-            console.log(data)
-            if (data?.data?.recipes){
-                setRecipes(data.data.recipes)
-                setSearchText('')
-                console.log(recipes)
-            }
-            else {
-                console.log("No recipes found")
-            }
-
-
-        } catch (error) {
-            console.log(error);
-            setError('An error occurred while fetching recipes.');
-
-        }
-        finally {
-            setLoading(false)
-        }
-    }
 
     return (
         <nav className="navbar navbar-dark bg-black flex items-center justify-between p-4">

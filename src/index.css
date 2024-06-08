@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+*{
+    font-family: Bahnschrift, serif;
+}
+
+body{
+    background-color: black;
+}
