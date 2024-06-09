@@ -9,7 +9,7 @@ function GlobalState({children}) {
     const [loading , setLoading]= useState(false)
     const [recipes, setRecipes]=useState([])
     const [error, setError] = useState(null);
-    const [recipeDetails, setRecipeDetails] = useState(null);
+    const [recipeDetails, setRecipeDetails] = useState([]);
 
 
     async function handleSearch(event) {
@@ -42,7 +42,7 @@ function GlobalState({children}) {
 
     return (
         <GlobalContext.Provider
-            value={{searchText, setSearchText,handleSearch,loading, recipes, error,recipeDetails,setRecipeDetails}}>
+            value={{searchText, setSearchText,handleSearch,loading, setLoading,recipes, error,recipeDetails,setRecipeDetails}}>
             {children}
         </GlobalContext.Provider>
     )

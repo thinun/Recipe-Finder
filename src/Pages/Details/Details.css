@@ -1,0 +1,33 @@
+.details-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.left-side, .right-side {
+    flex: 1;
+    min-width: 300px;
+    max-width: 500px;
+}
+.right-side {
+    margin-left: 40px;
+}
+
+.left-side img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+}
+
+.ingredients ul {
+    list-style-type: circle;
+    color: #e7cccc;
+    padding-left: 20px;
+}
+
+.ingredients li {
+    margin: 5px 0;
+    color: #e7cccc;
+}
