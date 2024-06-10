@@ -2,7 +2,7 @@
 import './App.css'
 import Navbar from "./Componunts/Navbar/Navbar.jsx";
 import Home from "./Pages/Home/Home.jsx";
-import Favorite from '../src/Pages/Favorite/Favorite.jsx'
+import Favorite from './Pages/Favorite/Favorite.jsx'
 import Details from "./Pages/Details/Details.jsx";
 import {Routes,Route} from "react-router-dom";
 

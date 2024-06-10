@@ -1,4 +1,5 @@
 import {createContext, useState, useEffect} from "react";
+import {useNavigate} from "react-router-dom";
 
 
 export const GlobalContext = createContext(null)
@@ -11,7 +12,7 @@ function GlobalState({children}) {
     const [error, setError] = useState(null);
     const [recipeDetails, setRecipeDetails] = useState([]);
     const [favoriteRecipes, setFavoriteRecipes] = useState([]);
-
+    const Navigate = useNavigate();
 
     async function handleSearch(event) {
         event.preventDefault()
@@ -25,6 +26,7 @@ function GlobalState({children}) {
             if (data?.data?.recipes) {
                 setRecipes(data.data.recipes)
                 setSearchText('')
+                Navigate('/')
 
 
             } else {
@@ -39,16 +41,19 @@ function GlobalState({children}) {
         }
     }
 
-    const handleFavoriteButtonClick = (currentRecipe) => {
-       setFavoriteRecipes(prevState => {
-           if(prevState[currentRecipe.id]){
-               return prevState
-           }
-           else {
-               return {...prevState,[currentRecipe.id]: currentRecipe}
-           }
-       })
-    }
+ const handleFavoriteButtonClick = (currentRecipe) => {
+    setFavoriteRecipes(prevState => {
+        if (prevState[currentRecipe.id]) {
+
+            const newState = { ...prevState };
+            delete newState[currentRecipe.id];
+            return newState;
+        } else {
+
+            return { ...prevState, [currentRecipe.id]: currentRecipe };
+        }
+    });
+};
 
     console.log(favoriteRecipes);
     return (

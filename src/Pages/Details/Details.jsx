@@ -5,7 +5,8 @@ import './Details.css'
 
 const Details = () => {
     const {id} = useParams();
-    const {recipeDetails, setRecipeDetails, loading, setLoading, error, setError, handleFavoriteButtonClick}
+    const {recipeDetails, setRecipeDetails, loading, setLoading,
+        error, setError, handleFavoriteButtonClick,favoriteRecipes}
         = useContext(GlobalContext);
 
     useEffect(() => {
@@ -57,7 +58,7 @@ const Details = () => {
                     <div className={'text-white pb-4'}>Cooking Time: {recipeDetails.cooking_time} minutes</div>
                     <button className={'bg-white w-40 h-8 rounded mb-4 hover:bg-blue-600'}
                             onClick={()=>handleFavoriteButtonClick(recipeDetails)}>
-                        Add to Favorite
+                        {favoriteRecipes[recipeDetails.id]? "Remove from favorite":"Add to Favorite"}
                     </button>
                     <p className={'text-white text-3xl pb-4'}>Ingredients</p>
 
