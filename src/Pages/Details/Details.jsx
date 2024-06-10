@@ -1,11 +1,12 @@
-import React, { useContext, useEffect } from 'react';
-import { useParams } from "react-router-dom";
-import { GlobalContext } from "../../Context/index.jsx";
+import React, {useContext, useEffect} from 'react';
+import {useParams} from "react-router-dom";
+import {GlobalContext} from "../../Context/index.jsx";
 import './Details.css'
 
 const Details = () => {
-    const { id } = useParams();
-    const { recipeDetails, setRecipeDetails, loading, setLoading, error, setError } = useContext(GlobalContext);
+    const {id} = useParams();
+    const {recipeDetails, setRecipeDetails, loading, setLoading, error, setError, handleFavoriteButtonClick}
+        = useContext(GlobalContext);
 
     useEffect(() => {
         async function fetchRecipeDetails() {
@@ -40,12 +41,11 @@ const Details = () => {
         return <div>No recipe details available</div>;
     }
 
-    console.log(recipeDetails)
 
     return (
         <div className="details-container">
             <div className="left-side">
-                <img src={recipeDetails.image_url} alt={recipeDetails.title} />
+                <img src={recipeDetails.image_url} alt={recipeDetails.title}/>
                 <div className="text-white font-bold py-4 text-2xl">{recipeDetails.publisher}</div>
 
 
@@ -55,6 +55,10 @@ const Details = () => {
                     <div className={'text-white text-3xl pb-4'}>{recipeDetails.title}</div>
                     <div className={'text-white'}>Servings: {recipeDetails.servings}</div>
                     <div className={'text-white pb-4'}>Cooking Time: {recipeDetails.cooking_time} minutes</div>
+                    <button className={'bg-white w-40 h-8 rounded mb-4 hover:bg-blue-600'}
+                            onClick={()=>handleFavoriteButtonClick(recipeDetails)}>
+                        Add to Favorite
+                    </button>
                     <p className={'text-white text-3xl pb-4'}>Ingredients</p>
 
                     <ul>

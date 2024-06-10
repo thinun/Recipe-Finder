@@ -53,3 +53,10 @@
     background-color: #ff3b2f;
     box-shadow: 1px 1px 10px #ff3b2f;
 }
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: white;
+}

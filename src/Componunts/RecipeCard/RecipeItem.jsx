@@ -21,7 +21,12 @@ const RecipeItem = () => {
                     </div>
                 ))
             ) : (
-                <div>No recipes found</div>
+                <div className="container">
+                    <div>
+                        No recipes found
+                    </div>
+                </div>
+
             )}
         </div>
     );
